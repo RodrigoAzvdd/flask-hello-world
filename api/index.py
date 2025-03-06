@@ -14,6 +14,10 @@ app.config['ALLOWED_EXTENSIONS'] = {'jpg', 'jpeg', 'png'}
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
+@app.route('/', methods=['GET'])
+def hello_world():
+    return jsonify({'message': 'Hello, World'}), 200
+
 # Rota para comparar as imagens
 @app.route('/compare', methods=['POST'])
 def compare_images():
